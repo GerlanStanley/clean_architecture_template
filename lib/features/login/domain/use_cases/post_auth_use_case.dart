@@ -3,16 +3,16 @@ import 'package:dartz/dartz.dart';
 
 import '../../../../core/common/strings/texts.dart';
 import '../../../../core/common/utils/utils.dart';
-
 import '../../../../core/failures/failure.dart';
+
 import '../entities/entities.dart';
 import '../failures/failures.dart';
 import '../repositories/repositories.dart';
 
-class PostAuthUseCaseImp implements UseCase<AuthEntity, AuthUseCaseParams> {
+class PostAuthUseCase implements IUseCase<AuthEntity, AuthUseCaseParams> {
   final IAuthRepository _postAuthRepository;
 
-  PostAuthUseCaseImp(this._postAuthRepository);
+  PostAuthUseCase(this._postAuthRepository);
 
   @override
   Future<Either<Failure, AuthEntity>> call(AuthUseCaseParams params) async {

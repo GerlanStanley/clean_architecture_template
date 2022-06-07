@@ -23,7 +23,7 @@ class Inject {
     getIt.registerLazySingleton<IAuthRepository>(() => AuthRepositoryImp(getIt()));
 
     // useCases
-    getIt.registerLazySingleton(() => PostAuthUseCaseImp(getIt()));
+    getIt.registerLazySingleton(() => PostAuthUseCase(getIt()));
 
     // controllers
   }

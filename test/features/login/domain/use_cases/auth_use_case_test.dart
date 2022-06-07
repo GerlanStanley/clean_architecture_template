@@ -14,7 +14,7 @@ class AuthRepositoryMock extends Mock implements IAuthRepository {}
 
 void main() {
   final repository = AuthRepositoryMock();
-  final useCase = PostAuthUseCaseImp(repository);
+  final useCase = PostAuthUseCase(repository);
 
   setUpAll(() {
     registerFallbackValue(AuthUseCaseParams(
