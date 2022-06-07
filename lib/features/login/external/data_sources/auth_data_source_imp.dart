@@ -6,13 +6,13 @@ import '../../domain/use_cases/use_cases.dart';
 import '../../infra/data_sources/data_sources.dart';
 import '../../infra/dtos/dtos.dart';
 
-class PostAuthDataSourceImp implements PostAuthDataSource {
+class AuthDataSourceImp implements AuthDataSource {
   final IHttpService _httpService;
 
-  PostAuthDataSourceImp(this._httpService);
+  AuthDataSourceImp(this._httpService);
 
   @override
-  Future<AuthDto> call(AuthUseCaseParams params) async {
+  Future<AuthDto> postLogin(AuthUseCaseParams params) async {
     try {
       Map response = await _httpService.post("me/token", data: {
         "login": params.email,

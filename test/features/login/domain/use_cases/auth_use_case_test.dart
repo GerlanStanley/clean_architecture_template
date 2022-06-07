@@ -4,13 +4,13 @@ import 'package:dartz/dartz.dart';
 import 'package:faker/faker.dart';
 import 'package:mocktail/mocktail.dart';
 
+import 'package:clean_architecture_template/core/helpers/either_extension.dart';
 import 'package:clean_architecture_template/features/login/domain/entities/entities.dart';
-import 'package:clean_architecture_template/features/login/domain/errors/errors.dart';
+import 'package:clean_architecture_template/features/login/domain/failures/failures.dart';
 import 'package:clean_architecture_template/features/login/domain/repositories/repositories.dart';
 import 'package:clean_architecture_template/features/login/domain/use_cases/use_cases.dart';
-import 'package:clean_architecture_template/core/helpers/either_extension.dart';
 
-class AuthRepositoryMock extends Mock implements PostAuthRepository {}
+class AuthRepositoryMock extends Mock implements IAuthRepository {}
 
 void main() {
   final repository = AuthRepositoryMock();
@@ -29,7 +29,7 @@ void main() {
       password: faker.internet.password(),
     ));
 
-    expect(result.asLeft(), isA<ValidationPostAuthError>());
+    expect(result.asLeft(), isA<ValidationPostAuthFailure>());
   });
 
   test("Deve retornar ValidationPostAuthError se o password não for informado", () async {
@@ -38,12 +38,12 @@ void main() {
       password: "",
     ));
 
-    expect(result.asLeft(), isA<ValidationPostAuthError>());
+    expect(result.asLeft(), isA<ValidationPostAuthFailure>());
   });
 
   test("Login com sucesso", () async {
     when(() => repository(any())).thenAnswer(
-      (_) async => Right<PostAuthError, AuthEntity>(AuthEntity(
+      (_) async => Right<PostAuthFailure, AuthEntity>(AuthEntity(
         token: faker.guid.guid(),
         name: faker.person.name(),
         email: faker.internet.email(),

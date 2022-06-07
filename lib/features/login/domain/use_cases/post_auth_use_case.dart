@@ -4,25 +4,25 @@ import 'package:dartz/dartz.dart';
 import '../../../../core/common/strings/texts.dart';
 import '../../../../core/common/utils/utils.dart';
 
-import '../../../../core/errors/failure.dart';
+import '../../../../core/failures/failure.dart';
 import '../entities/entities.dart';
-import '../errors/errors.dart';
+import '../failures/failures.dart';
 import '../repositories/repositories.dart';
 
 class PostAuthUseCaseImp implements UseCase<AuthEntity, AuthUseCaseParams> {
-  final PostAuthRepository _postAuthRepository;
+  final IAuthRepository _postAuthRepository;
 
   PostAuthUseCaseImp(this._postAuthRepository);
 
   @override
   Future<Either<Failure, AuthEntity>> call(AuthUseCaseParams params) async {
     if (!Validation.isEmail(params.email)) {
-      return Left(ValidationPostAuthError(
+      return Left(ValidationPostAuthFailure(
         message: Texts.loginPage.emailErrorUseCase,
       ));
     }
     else if (params.password.isEmpty) {
-      return Left(ValidationPostAuthError(
+      return Left(ValidationPostAuthFailure(
         message: Texts.loginPage.passwordEmptyUseCase,
       ));
     }

@@ -1,1 +1,1 @@
-export 'post_auth_error.dart';
+export 'post_auth_failure.dart';

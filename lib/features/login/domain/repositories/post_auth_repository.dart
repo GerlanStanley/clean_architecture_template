@@ -1,9 +1,9 @@
 import 'package:dartz/dartz.dart';
 
+import '../../../../core/failures/failure.dart';
 import '../entities/entities.dart';
-import '../errors/errors.dart';
 import '../use_cases/use_cases.dart';
 
-abstract class PostAuthRepository {
-  Future<Either<PostAuthError, AuthEntity>> call(AuthUseCaseParams params);
+abstract class IAuthRepository {
+  Future<Either<Failure, AuthEntity>> call(AuthUseCaseParams params);
 }

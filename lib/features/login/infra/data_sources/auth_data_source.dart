@@ -2,6 +2,6 @@ import 'package:clean_architecture_template/features/login/infra/dtos/auth_dto.d
 
 import '../../domain/use_cases/use_cases.dart';
 
-abstract class PostAuthDataSource {
-  Future<AuthDto> call(AuthUseCaseParams params);
+abstract class AuthDataSource {
+  Future<AuthDto> postLogin(AuthUseCaseParams params);
 }
