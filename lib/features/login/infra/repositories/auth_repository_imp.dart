@@ -7,10 +7,10 @@ import '../../domain/use_cases/use_cases.dart';
 
 import '../data_sources/data_sources.dart';
 
-class PostAuthRepositoryImp implements IAuthRepository {
-  final AuthDataSource _dataSource;
+class AuthRepositoryImp implements IAuthRepository {
+  final IAuthDataSource _dataSource;
 
-  PostAuthRepositoryImp(this._dataSource);
+  AuthRepositoryImp(this._dataSource);
 
   @override
   Future<Either<Failure, AuthEntity>> call(AuthUseCaseParams params) async {

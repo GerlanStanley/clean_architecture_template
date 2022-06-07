@@ -6,7 +6,7 @@ import '../../domain/use_cases/use_cases.dart';
 import '../../infra/data_sources/data_sources.dart';
 import '../../infra/dtos/dtos.dart';
 
-class AuthDataSourceImp implements AuthDataSource {
+class AuthDataSourceImp implements IAuthDataSource {
   final IHttpService _httpService;
 
   AuthDataSourceImp(this._httpService);
