@@ -1,6 +1,6 @@
-import '../../../../core/errors/errors.dart';
+import '../../../../core/errors/failure.dart';
 
-class PostAuthError extends HttpError {
+class PostAuthError extends Failure {
   PostAuthError({required String message}) : super(message: message);
 }
 

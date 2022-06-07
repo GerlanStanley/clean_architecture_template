@@ -1,7 +1,7 @@
-class HttpError {
-  final String message;
+import 'failure.dart';
 
-  HttpError({required this.message});
+class HttpError extends Failure {
+  HttpError({required String message}) : super(message: message);
 }
 
 class BadRequestHttpError extends HttpError {
